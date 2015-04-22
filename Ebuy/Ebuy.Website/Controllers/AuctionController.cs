@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ebuy.Website.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,9 +16,19 @@ namespace Ebuy.Website.Controllers
         }
 
         // GET: Auction/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+            var auction = new Auction()
+            {
+                Id = id,
+                Title = "Brand new widget",
+                Description = "Brand new Widget version 2.0",
+                StartPrice = 2.00m, 
+                CurrentPrice = 13.56m, 
+                StartTime = DateTime.Parse("2-12-2015 6:34 PM"),
+                EndTime = DateTime.Parse("3-15-2015 4:24 PM")
+            };
+            return View(auction);
         }
 
         // GET: Auction/Create
